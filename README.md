@@ -1,6 +1,6 @@
 CMPM121 HW2
 
-*** Main Mechanics: The Scripted camera moves along with with the moving chair. The moving chair can be moved by the player by using the arrow keys on the keyboard. The Change Light button can be used to switch the lamp light off, on and dimmed.
+*** Main Mechanics: The Scripted camera moves along with with the moving chair. The moving chair can be moved by the player by using the arrow keys on the keyboard. The "Change Light" button can be used to switch the lamp light off, on and dimmed. The "Change Camera" button switches between a first person and a third person camera.
 
 Objects used in this scene:
 
@@ -23,15 +23,7 @@ Objects used in this scene:
 - - Mid Thick Hardcover book 2.3
 - - Thick hardcover Book 2.3
 - - Thin Paperback
-- - Book Set
-- - Bookshelf
-- - Box
-- - Cardboard Box
-- - Cupboard
 - - 70s record player
-- - Film Reel
-- - Musical Box
-- - Old Record Player 
 
 > 3d Horror Ouija Board by CBDVisuals
 - - Planchette
