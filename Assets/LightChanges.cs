@@ -7,41 +7,19 @@ using UnityEngine.UIElements;
 
 public class LightChanges : MonoBehaviour
 {
+    // create camera list that can be updated in the inspector
+    public List<Camera> Cameras;
+
     // private bool on = false;
     public Light myLight;
     // create frame and button variables 
     private VisualElement frame;
     private Button button;
-        // initialize click count
+    private Button button1;
+
+    // initialize click count
     int click = 0;
-    // Start is called before the first frame update
-
-    // void Start()
-    // {
-    //     myLight = GetComponent<Light>();
-
-    // }
-
-    // Update is called once per frame
-    // void Update()
-    // {
-    //     Debug.Log("check1");
-    //     if (Input.GetKeyDown(KeyCode.E)) {
-    //         myLight.intensity = Mathf.PingPong(Time.time, 8);
-    //     }
-    //     // if (Input.GetKeyDown(KeyCode.E) && !on)
-    //     // {
-    //     //     Debug.Log("check2");
-    //     //     myLight.SetActive(true);
-    //     //     on = true;
-    //     // }
-    //     // else if (Input.GetKeyDown(KeyCode.E) && on)
-    //     //     {
-    //     //     Debug.Log("check3");
-    //     //     myLight.SetActive(false);
-    //     //     on = false;
-    //     // }
-    // }
+    int click2 = 0;
 
     // This function is called when the object becomes enabled and active.
     void OnEnable() {
@@ -54,6 +32,10 @@ public class LightChanges : MonoBehaviour
         button = frame.Q<Button>("Button");
         // create event listener that calls ChangeCamera() when pressed
         button.RegisterCallback<ClickEvent>(ev => ChangeLight());
+
+        button1 = frame.Q<Button>("Button1");
+        // create event listener that calls ChangeCamera() when pressed
+        button1.RegisterCallback<ClickEvent>(ev => ChangeCamera());
     }
    
     private void ChangeLight(){
@@ -65,32 +47,26 @@ public class LightChanges : MonoBehaviour
             myLight.intensity = 10;
         }
         click++;
-        // myLight.intensity = Mathf.PingPong(Time.time, 8);
-        // EnableCamera(click);
-        // click++;
-        // // reset counter so it is not out of bounds (only have 4 cameras)
         if(click > 2){
             click = 0;
         }
     }
 
-    // public GameObject light;
-    // private bool on = false;
-
-    // // Use this for initialization
-    // void OnTriggerStay(Collider plyr) {
-    //     Debug.Log("check1");
-    //     if (Input.GetKeyDown(KeyCode.E) && !on)
-    //     {
-    //         Debug.Log("check2");
-    //         light.SetActive(true);
-    //         on = true;
-    //     }
-    //     else if (Input.GetKeyDown(KeyCode.E) && on)
-    //         {
-    //         Debug.Log("check3");
-    //         light.SetActive(false);
-    //         on = false;
-    //     }
-    // }
+    private void ChangeCamera(){
+        EnableCamera(click2);
+        click2++;
+        // reset counter so it is not out of bounds (only have 4 cameras)
+        if(click2 > 1){
+            click2 = 0;
+        }
+    }
+    private void EnableCamera(int n)
+    {
+        // disable each of the cameras
+        Cameras.ForEach(cam => cam.enabled = false);
+        // Cameras.ForEach(cam => cam.depth = 0);
+        // enable the selected camera
+        Cameras[n].enabled = true;
+        // Cameras[n].depth = 1;
+    }
 }
